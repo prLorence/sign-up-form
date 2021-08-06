@@ -15,7 +15,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" render={() => <Redirect to="/LogIn" />} />
-          <Route>
+          <Route path="/LogIn">
             <LogIn />
           </Route>
           <Route path="/SignUp">
