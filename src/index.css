@@ -73,6 +73,7 @@ label {
 }
 
 .submit-button {
+  transition: transform;
   padding: 0.8em;
   width: 130px;
   height: 45px;
@@ -84,6 +85,14 @@ label {
   margin-bottom: 1.5em;
   margin-top: 0.5em;
   outline: none;
+}
+
+.submit-button:hover {
+  transform: scale(1.1);
+}
+
+.submit-button:active {
+  transform: scale(1);
 }
 
 .call-to-action-link,
