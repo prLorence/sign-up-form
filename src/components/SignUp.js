@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 function SignUp() {
   const [username, setUsername] = useState("");
@@ -10,6 +11,7 @@ function SignUp() {
 
   useEffect(() => {
     passwordValidation(password1, password2);
+    sendData(username, password1, password2);
   }, [password1, password2]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const passwordValidation = () => {
@@ -20,6 +22,22 @@ function SignUp() {
     } else {
       setPasswordStatus(true);
     }
+  };
+
+  const sendData = (username, password1, password2) => {
+    axios
+      .post("https://sign-up-form-backend.herokuapp.com/api/register", {
+        id: 1,
+        username: username,
+        password: password1,
+        repeatPassword: password2,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const credentialsValidation = () => {
@@ -52,7 +70,7 @@ function SignUp() {
           e.preventDefault();
           formValidation();
           formReset();
-
+          sendData();
           // postCredentialsInApi();
         }}
       >
